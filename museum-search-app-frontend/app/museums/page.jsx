@@ -7,9 +7,10 @@ export default async function SearchResultPage({ searchParams }) {
 	const size = 20;
 	const sortKey = params.sort ?? "startDate";
 
-	const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/museums/results?keyword=${keyword}&page=${page}&size=${size}&sort=${sortKey},asc`, {
-					next: { revalidate: 60 },
-				});
+	const res = await fetch(
+		`${process.env.NEXT_PUBLIC_API_URL}/api/museums/results?keyword=${keyword}&page=${page}&size=${size}&sort=${sortKey},asc`, {
+		cache: "force-cache",
+	});
 	
 	if (!res.ok) {
 		throw new Error('美術館を取得でません');

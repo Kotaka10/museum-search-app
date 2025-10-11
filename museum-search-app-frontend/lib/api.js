@@ -1,5 +1,8 @@
 export async function getMuseumById(id) {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/museums/${id}`);
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/api/museums/${id}`,
+    { cache: "force-cache" }
+  );
   if (!res.ok) throw new Error("美術館が見つかりません");
   const data = await res.json();
 

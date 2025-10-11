@@ -7,9 +7,10 @@ export default async function FilteredPrefecturePage({ searchParams }) {
     const size = 20;
     const sortKey = params.sort ?? "startDate";
 
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/museums/gardens/${encodeURIComponent(garden)}?page=${page}&size=${size}&sort=${sortKey},asc`, {
-                    next: { revalidate: 60 },
-                });
+    const res = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/api/museums/gardens/${encodeURIComponent(garden)}?page=${page}&size=${size}&sort=${sortKey},asc`, {
+        cache: "force-cache" ,
+    });
     if (!res.ok) {
         throw new Error('庭園を取得でません');
     }
