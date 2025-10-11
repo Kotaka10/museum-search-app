@@ -54,10 +54,7 @@ public class MuseumController {
                 .map(museumMapper::toDTO)
                 .toList();
 
-        return ResponseEntity.ok()
-                .header("Cache-Control", "no-store, no-cache, must-revalidate, max-age=0")
-                .header("Pragma", "no-cache")
-                .body(museumDTOs);
+        return ResponseEntity.ok(museumDTOs);
     }
 
     @GetMapping("/results")
