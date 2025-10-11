@@ -1,0 +1,37 @@
+'use client';
+
+import { logoutAPI } from '@/lib/auth';
+import { useAuth } from '@/app/context/AuthContext';
+import SearchMuseums from '@/app/components/ui/SearchMuseums';
+import MobileMenu from '@/app/components/common/MobileMenu';
+import Link from 'next/link';
+
+export default function Header() {
+    const { user, isLoading, logout } = useAuth();
+
+    return (
+        <header className="flex justify-between items-center p-2 bg-gray-100 shadow">
+            <div>
+                <Link href="/" className="text-lg sm:text-3xl font-bold">Museum</Link>
+            </div>
+            <div className="flex items-center space-x-2 sm:space-x-6 text-sm">
+                <SearchMuseums />
+                <Link href="/nearby" className="text-orange-500 hover:underline">マップ</Link>
+                {user ? (
+                    <>
+                        <Link href="/mypage" className="text-orange-500 hover:underline">マイページ</Link>
+                        <button onClick={() => logoutAPI(logout)} className="text-orange-500 hover:underline">
+                            ログアウト
+                        </button>
+                    </>
+                ) : (
+                    <>                        
+                        <Link href="/users/register" className="text-orange-500 hover:underline">会員登録</Link>
+                        <Link href="/users/login" className="text-orange-500 hover:underline">ログイン</Link>
+                    </>
+                )}
+                <MobileMenu />
+            </div>
+        </header>
+    );
+}
