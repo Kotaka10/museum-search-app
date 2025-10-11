@@ -1,30 +1,16 @@
-'use client';
-
 import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
-import { useAuth } from '@/app/context/AuthContext';
 
-export default function GardenImageLayout() {
-	const [museums, setMuseums] = useState([]);
-	const { token } = useAuth();
+export const revalidate = 3600 * 24;
 
-	useEffect(() => {
-		const fetchMuseums = async () => {
-		    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/museums/all`, {
-			  headers: {
-                "Authorization": `Bearer ${token}`
-            },
-		    });
-		    if (!res.ok) {
-			  throw new Error('美術館の取得に失敗しました');
-		    }
-		    const data = await res.json();
-		    setMuseums(data);
-		}
-	
-		fetchMuseums();
-	}, []);
+export default async function GardenImageLayout() {
+	const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/museums/all`, {
+		next: {revalidate: 3600 * 24},
+	});
+	if (!res.ok) {
+		throw new Error('美術館の取得に失敗しました');
+	}
+	const museums = await res.json();
 
 	return (
 		<div className="mb-2">
