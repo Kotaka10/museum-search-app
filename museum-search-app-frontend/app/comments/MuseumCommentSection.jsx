@@ -24,6 +24,10 @@ export default function MuseumCommentSection({ museumId }) {
         }
 
         fetchComments();
+
+        const interval = setInterval(fetchComments, 10000);
+
+        return () => clearInterval(interval);
     }, [museumId]);
 
     return (
