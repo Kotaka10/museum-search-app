@@ -149,41 +149,43 @@ export default function EditMuseumPage() {
 	};
 
 	return (
-		<div className="max-w-3xl mx-auto p-4 bg-gradient-to-br from-emerald-50 via-cyan-50 to-sky-10">
-			<h1 className="text-2xl font-bold mb-4">美術館情報を編集</h1>
+		<div className="bg-gradient-to-br from-emerald-50 via-cyan-50 to-sky-10">
+			<div className="max-w-3xl mx-auto p-4">
+				<h1 className="text-2xl font-bold mb-4">美術館情報を編集</h1>
 
-			<form onSubmit={handleSubmit} className="space-y-4">
-				<InputField label="美術館名" name="name" value={form.name || ''} onChange={handleChange} />
-				<InputField label="展示名" name="exhibition" value={form.exhibition || ''} onChange={handleChange} />
-				<InputField label="住所" name="address" value={form.address || ''} onChange={handleChange} />
-				<InputField label="都道府県" name="prefecture" value={form.prefecture || ''} onChange={handleChange} />
-				<InputField label="電話番号" name="phoneNumber" value={form.phoneNumber || ''} onChange={handleChange} />
-				<InputField label="美術館URL" name="museumUrl" value={form.museumUrl || ''} onChange={handleChange} />
-				<InputField label="展示URL" name="exhibitionUrl" value={form.exhibitionUrl || ''} onChange={handleChange} />
-				<InputField label="開始日" name="startDate" value={form.startDate || ''} onChange={handleChange} />
-				<InputField label="終了日" name="endDate" value={form.endDate || ''} onChange={handleChange} />
-				<div>
-					<label className="block text-sm font-medium mb-1">説明</label>
-					<textarea
-						name="description"
-						value={form.description || ''}
-						onChange={handleChange}
-						className="w-full p-2 border rounded h-32 resize-none"
-					/>
-				</div>
-				<InputField label="開館時間" name="openingHours" value={form.openingHours || ''} onChange={handleChange} />
-				<InputField label="休館日" name="closingDays" value={form.closingDays || ''} onChange={handleChange} />
-				<InputField label="入館料" name="admissionFee" value={form.admissionFee || ''} onChange={handleChange} />
-				<InputField label="アクセス" name="access" value={form.access || ''} onChange={handleChange} />
-				<InputField label="緯度" name="latitude" type="number" value={form.latitude || ''} onChange={handleChange} />
-				<InputField label="経度" name="longitude" type="number" value={form.longitude || ''} onChange={handleChange} />
-				<InputField label="カテゴリ" name="category" value={form.category || ''} onChange={handleChange} />
+				<form onSubmit={handleSubmit} className="space-y-4">
+					<InputField label="美術館名" name="name" value={form.name || ''} onChange={handleChange} />
+					<InputField label="展示名" name="exhibition" value={form.exhibition || ''} onChange={handleChange} />
+					<InputField label="住所" name="address" value={form.address || ''} onChange={handleChange} />
+					<InputField label="都道府県" name="prefecture" value={form.prefecture || ''} onChange={handleChange} />
+					<InputField label="電話番号" name="phoneNumber" value={form.phoneNumber || ''} onChange={handleChange} />
+					<InputField label="美術館URL" name="museumUrl" value={form.museumUrl || ''} onChange={handleChange} />
+					<InputField label="展示URL" name="exhibitionUrl" value={form.exhibitionUrl || ''} onChange={handleChange} />
+					<InputField label="開始日" name="startDate" value={form.startDate || ''} onChange={handleChange} />
+					<InputField label="終了日" name="endDate" value={form.endDate || ''} onChange={handleChange} />
+					<div>
+						<label className="block text-sm font-medium mb-1">説明</label>
+						<textarea
+							name="description"
+							value={form.description || ''}
+							onChange={handleChange}
+							className="w-full p-2 border rounded h-32 resize-none"
+						/>
+					</div>
+					<InputField label="開館時間" name="openingHours" value={form.openingHours || ''} onChange={handleChange} />
+					<InputField label="休館日" name="closingDays" value={form.closingDays || ''} onChange={handleChange} />
+					<InputField label="入館料" name="admissionFee" value={form.admissionFee || ''} onChange={handleChange} />
+					<InputField label="アクセス" name="access" value={form.access || ''} onChange={handleChange} />
+					<InputField label="緯度" name="latitude" type="number" value={form.latitude || ''} onChange={handleChange} />
+					<InputField label="経度" name="longitude" type="number" value={form.longitude || ''} onChange={handleChange} />
+					<InputField label="カテゴリ" name="category" value={form.category || ''} onChange={handleChange} />
 
-				<button type="submit" className="w-full bg-orange-500 text-white p-2 rounded hover:bg-orange-600">
-					更新する
-				</button>
-				{error && <p className="text-red-500">{error}</p>}
-			</form>
+					<button type="submit" className="w-full bg-orange-500 text-white p-2 rounded hover:bg-orange-600">
+						更新する
+					</button>
+					{error && <p className="text-red-500">{error}</p>}
+				</form>
+			</div>
 		</div>
 	);
 }
