@@ -33,8 +33,7 @@ export default function EditMuseumPage() {
 		exhibition: '',
 		museumUrl: '',
 		exhibitionUrl: '',
-		startDate: '',
-		endDate: '',
+		schedule: '',
 		description: '',
 		openingHours: '',
 		closingDays: '',
@@ -161,8 +160,7 @@ export default function EditMuseumPage() {
 					<InputField label="電話番号" name="phoneNumber" value={form.phoneNumber || ''} onChange={handleChange} />
 					<InputField label="美術館URL" name="museumUrl" value={form.museumUrl || ''} onChange={handleChange} />
 					<InputField label="展示URL" name="exhibitionUrl" value={form.exhibitionUrl || ''} onChange={handleChange} />
-					<InputField label="開始日" name="startDate" value={form.startDate || ''} onChange={handleChange} />
-					<InputField label="終了日" name="endDate" value={form.endDate || ''} onChange={handleChange} />
+					<InputField label="スケジュール" name="schedule" value={form.schedule} onChange={handleChange} />
 					<div>
 						<label className="block text-sm font-medium mb-1">説明</label>
 						<textarea
