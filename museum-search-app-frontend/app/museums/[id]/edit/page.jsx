@@ -21,7 +21,10 @@ function InputField({ label, name, type = 'text', value, onChange }) {
 
 export default function EditMuseumPage() {
 	const router = useRouter();
+	const params = useParams();
+	const id = Array.isArray(params?.id) ? params.id[0] : params?.id;
 	const { token } = useAuth();
+
 	const [form, setForm] = useState({
 		name: '',
 		address: '',
