@@ -1,7 +1,7 @@
 'use client';
 
 import { useAuth } from "@/app/authentication/AuthContext";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 export default function DeleteMuseum({ id }) {
     const { token } = useAuth();
