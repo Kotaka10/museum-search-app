@@ -46,12 +46,16 @@ public class JwtProvider {
     }
 
     public String generateToken(String email, List<String> roles) {
+        List<String> prefixedRoles = roles.stream()
+        .map(role -> role.startsWith("ROLE_") ? role : "ROLE_" + role)
+        .toList();
+
         Date now = new Date();
         Date expiry = new Date(now.getTime() + expiration);
 
         return Jwts.builder()
             .setSubject(email)
-            .claim("roles", roles)
+            .claim("roles", prefixedRoles)
             .setIssuedAt(now)
             .setExpiration(expiry)
             .signWith(key, SignatureAlgorithm.HS256)
