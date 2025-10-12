@@ -5,26 +5,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
-function getDistance(currentLat, museumLat, currentLon, museumLon) {
-    const earthRadiusKm = 6371;
-    const deltaLatitudeRad = (museumLat - currentLat) * (Math.PI / 180);
-    const deltaLongitudeRad = (museumLon - currentLon) * (Math.PI / 180);
-
-    const haversineFormulaValue = 
-        Math.sin(deltaLatitudeRad / 2) ** 2 +
-        Math.cos(currentLat * (Math.PI / 180)) *
-        Math.cos(museumLat * (Math.PI / 180)) *
-        Math.sin(deltaLongitudeRad / 2) ** 2
-    ;
-
-    const centralAngelRad = 2 * Math.atan2(
-        Math.sqrt(haversineFormulaValue),
-        Math.sqrt(1 - haversineFormulaValue)
-    );
-
-    return earthRadiusKm * centralAngelRad;
-}
-
 const LIBRARIES = ["geometry"];
 
 export default function NearbyMuseums({ museums }) {
@@ -50,17 +30,12 @@ export default function NearbyMuseums({ museums }) {
                     lat: latitude,
                     lng: longitude,
                 });
-
-                const museumsProperty = museums.map((museum) => ({
-                    ...museum,
-                    distance: getDistance(latitude, longitude, museum.latitude, museum.longitude),
-                }));
-            },
-            (error) => {
-                console.error("位置情報取得失敗" + error);
-            }
+                (error) => {
+                    console.error("位置情報取得失敗" + error);
+                }
+            }    
         );
-    }, [museums]);
+    }, []);
 
     const mapContainerStyle = {
         width: '100%',
@@ -83,6 +58,22 @@ export default function NearbyMuseums({ museums }) {
         ;
     }
 
+    const markersToRender = museums
+        .map((museum) => {
+            if (!window.google?.maps?.geometry) return null;
+
+            const distance = window.google.maps.geometry.spherical.computeDistanceBetween(
+                new window.google.maps.LatLng(userLocation.lat, userLocation.lng),
+                new window.google.maps.LatLng(museum.latitude, museum.longitude)
+            );
+
+            if (distance <= 50000) {
+                return { ...museum, distance: distance / 1000 };
+            }
+            return null;
+        })
+        .filter(Boolean);
+
     return (
         <GoogleMap
             mapContainerStyle={mapContainerStyle}
@@ -100,27 +91,13 @@ export default function NearbyMuseums({ museums }) {
                 }}
             />
 
-            {isLoaded && userLocation && museums.map((museum) => {
-                if (!window.google?.maps?.geometry) return null;
-                
-                const distance = window.google.maps.geometry.spherical.computeDistanceBetween(
-                    new window.google.maps.LatLng(userLocation.lat, userLocation.lng),
-                    new window.google.maps.LatLng(museum.latitude, museum.longitude)
-                );
-
-                if (distance <= 50000) {
-                    const museumWithDistance = { ...museum, distance: distance / 1000 };
-
-                    return (
-                        <Marker
-                            key={museum.id}
-                            position={{ lat: museum.latitude, lng: museum.longitude }}
-                            onClick={() => setSelectedMuseum(museumWithDistance)}
-                        />
-                    )
-                }
-                return null;
-            })}
+            {markersToRender.map((museum) => (
+                <Marker
+                    key={museum.id}
+                    position={{ lat: museum.latitude, lng: museum.longitude }}
+                    onClick={() => setSelectedMuseum(museum)}
+                />
+            ))}
 
             {selectedMuseum && (
                 <InfoWindow
