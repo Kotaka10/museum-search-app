@@ -125,7 +125,7 @@ export default function CreateMuseumPage() {
                 throw new Error("美術館の作成に失敗しました");
             }
 
-            router.push("/");
+            router.push("/mypage");
             alert("美術館が「承認待ち美術館」として正常に登録されました。ステータスはマイページで確認してください");
         } catch (err) {
             setError(err.message || "美術館の作成に失敗しました");
