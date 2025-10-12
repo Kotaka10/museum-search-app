@@ -46,6 +46,7 @@ public class SecurityConfig {
                 .requestMatchers(HttpMethod.GET, "/api/museums/results", "/api/museums/results/").permitAll()
                 .requestMatchers("/api/users/mypage", "/api/users/change-password").hasAnyRole("ADMIN", "USER")
                 .requestMatchers("/api/admin/**").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.PUT, "/api/museums/**").hasAnyRole("ADMIN", "USER")
                 .requestMatchers(HttpMethod.DELETE, "/api/museums/**").hasAnyRole("ADMIN", "USER")
                 .requestMatchers(HttpMethod.DELETE, "/api/comments/**").hasAnyRole("ADMIN", "USER")
                 .requestMatchers(HttpMethod.DELETE, "/api/users/**").hasAnyRole("ADMIN", "USER")
