@@ -75,23 +75,6 @@ export default function EditMuseumPage() {
 		e.preventDefault();
 		setError('');
 
-		try {
-			const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/museums/${id}`, {
-				method: 'PUT',
-				headers: { 'Content-Type': 'application/json' },
-				headers: {
-					"Authorization": `Bearer ${token}`
-				},
-				body: JSON.stringify(form),
-			});
-
-			if (!res.ok) throw new Error('更新に失敗しました');
-			alert('更新が完了しました');
-			router.push('/');
-		} catch (err) {
-			setError(err.message);
-		}
-
 		if (!form.name.trim()) {
             setError("美術館名を入力してください");
             return;
@@ -146,6 +129,23 @@ export default function EditMuseumPage() {
         if (form.description.length > 1500 ) {
             setError('展示説明は100文字以下で登録してください');
         }
+
+		try {
+			const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/museums/${id}`, {
+				method: 'PUT',
+				headers: {
+					"Authorization": "Bearer ${token}",
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify(form),
+			});
+
+			if (!res.ok) throw new Error('更新に失敗しました');
+			alert('更新が完了しました');
+			router.push('/');
+		} catch (err) {
+			setError(err.message);
+		}
 	};
 
 	return (

@@ -56,26 +56,6 @@ export default function CreateMuseumPage() {
         e.preventDefault();
         setError('');
 
-        try {
-            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/museums`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-					"Authorization": `Bearer ${token}`
-                },
-                body: JSON.stringify(form),
-            });
-
-            if (!res.ok) {
-                throw new Error("美術館の作成に失敗しました");
-            }
-
-            router.push("/");
-            alert("美術館が「承認待ち美術館」として正常に登録されました。ステータスはマイページで確認してください");
-        } catch (err) {
-            setError(err.message || "美術館の作成に失敗しました");
-        }
-
         if (!form.name.trim()) {
             setError("美術館名を入力してください");
             return;
@@ -129,6 +109,26 @@ export default function CreateMuseumPage() {
         }
         if (form.description.length > 1500 ) {
             setError('展示説明は100文字以下で登録してください');
+        }
+
+        try {
+            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/museums`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+					"Authorization": `Bearer ${token}`
+                },
+                body: JSON.stringify(form),
+            });
+
+            if (!res.ok) {
+                throw new Error("美術館の作成に失敗しました");
+            }
+
+            router.push("/");
+            alert("美術館が「承認待ち美術館」として正常に登録されました。ステータスはマイページで確認してください");
+        } catch (err) {
+            setError(err.message || "美術館の作成に失敗しました");
         }
     };
 
