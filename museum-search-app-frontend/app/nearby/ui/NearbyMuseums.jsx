@@ -10,6 +10,7 @@ const LIBRARIES = ["geometry"];
 export default function NearbyMuseums({ museums }) {
     const [userLocation, setUserLocation] = useState(null);
     const [selectedMuseum, setSelectedMuseum] = useState(null);
+    const [markersToRender, setMarkersToRender] = useState([]);
     const { isLoaded } = useJsApiLoader({
         googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
         libraries: LIBRARIES,
@@ -37,6 +38,24 @@ export default function NearbyMuseums({ museums }) {
         );
     }, []);
 
+        useEffect(() => {
+        if (!isLoaded || !userLocation) return;
+
+        const filteredMarkers = museums
+            .map((museum) => {
+                if (!window.google?.maps?.geometry) return null;
+                const distance = window.google.maps.geometry.spherical.computeDistanceBetween(
+                    new window.google.maps.LatLng(userLocation.lat, userLocation.lng),
+                    new window.google.maps.LatLng(museum.latitude, museum.longitude)
+                );
+                if (distance <= 50000) return { ...museum, distance: distance / 1000 };
+                return null;
+            })
+            .filter(Boolean);
+
+        setMarkersToRender(filteredMarkers);
+    }, [isLoaded, userLocation, museums]);
+
     const mapContainerStyle = {
         width: '100%',
         height: '75vh',
@@ -57,22 +76,6 @@ export default function NearbyMuseums({ museums }) {
                 </div>
         ;
     }
-
-    const markersToRender = museums
-        .map((museum) => {
-            if (!window.google?.maps?.geometry) return null;
-
-            const distance = window.google.maps.geometry.spherical.computeDistanceBetween(
-                new window.google.maps.LatLng(userLocation.lat, userLocation.lng),
-                new window.google.maps.LatLng(museum.latitude, museum.longitude)
-            );
-
-            if (distance <= 50000) {
-                return { ...museum, distance: distance / 1000 };
-            }
-            return null;
-        })
-        .filter(Boolean);
 
     return (
         <GoogleMap

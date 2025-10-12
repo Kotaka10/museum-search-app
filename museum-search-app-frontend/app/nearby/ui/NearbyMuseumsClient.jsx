@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from "react";
-import NearbyMuseums from "@/app/nearby/ui/NearbyMuseums";
+import NearbyMuseumsWrapper from "@/app/nearby/ui/NearbyMuseumsWrapper";
 
 export default function NearbyMuseumsClient() {
     const [museums, setMuseums] = useState([]);
@@ -33,5 +33,5 @@ export default function NearbyMuseumsClient() {
 
     if (error) return <p className="text-red-500">{error}</p>;
 
-    return <NearbyMuseums museums={museums} />
+    return <NearbyMuseumsWrapper museums={museums} />
 }
