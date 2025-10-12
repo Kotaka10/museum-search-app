@@ -1,4 +1,4 @@
-export const revalidate = 3600 * 24;
+'use client';
 
 import Image from 'next/image';
 import Link from 'next/link';
@@ -6,23 +6,24 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { FreeMode, Navigation, Mousewheel } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
+import { useEffect, useState } from 'react';
 
 export default async function ImageCarousel() {
-  let museums = [];
-	try {
-		const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/museums/all`, {
-			next: { revalidate: 3600 * 24 },
-		});
-		if (res.ok) {
-			museums = await res.json();
-		} else {
-			console.error("APIレスポンスエラー:", res.status);
-		}
-	} catch (error) {
-		console.error("フェッチ中にエラー発生:", error);
-		museums = [];
-	}
+  const [museums, setMuseums] = useState([]);
 
+  useEffect(()=> {
+    const fetchMuseums = async () => {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/museums/all`);
+      if (!res.ok) {
+        throw new Error('美術館の取得に失敗しました');
+      }
+      const data = await res.json();
+      setMuseums(data);
+    }
+
+    fetchMuseums();
+  }, []);
+  
   return (
     <>
       <h2 className="text-center text-3xl sm:text-5xl mt-12">美術館</h2>
