@@ -8,6 +8,8 @@ const containerStyle = {
 };
 
 export default function MapView({ latitude, longitude, name }) {
+    if (typeof window === "undefined" || !window.google) return null;
+    
     const center = {
         lat: latitude,
         lng: longitude
