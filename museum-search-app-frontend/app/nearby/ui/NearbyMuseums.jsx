@@ -101,6 +101,8 @@ export default function NearbyMuseums({ museums }) {
             />
 
             {isLoaded && userLocation && museums.map((museum) => {
+                if (!window.google?.maps?.geometry) return null;
+                
                 const distance = window.google.maps.geometry.spherical.computeDistanceBetween(
                     new window.google.maps.LatLng(userLocation.lat, userLocation.lng),
                     new window.google.maps.LatLng(museum.latitude, museum.longitude)
