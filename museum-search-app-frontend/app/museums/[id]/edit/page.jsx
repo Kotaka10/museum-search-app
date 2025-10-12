@@ -33,7 +33,8 @@ export default function EditMuseumPage() {
 		exhibition: '',
 		museumUrl: '',
 		exhibitionUrl: '',
-		schedule: '',
+		startDate: '',
+		endDate: '',
 		description: '',
 		openingHours: '',
 		closingDays: '',
@@ -92,7 +93,10 @@ export default function EditMuseumPage() {
         if (form.exhibition.length > 100 ) {
             setError('展覧会名は100文字以下で登録してください');
         }
-        if (form.schedule.length > 100 ) {
+        if (form.startDate.length > 100 ) {
+            setError('スケジュールは100文字以下で登録してください');
+        }
+		if (form.endDate.length > 100 ) {
             setError('スケジュールは100文字以下で登録してください');
         }
         if (form.category.length > 100 ) {
@@ -160,7 +164,7 @@ export default function EditMuseumPage() {
 					<InputField label="電話番号" name="phoneNumber" value={form.phoneNumber || ''} onChange={handleChange} />
 					<InputField label="美術館URL" name="museumUrl" value={form.museumUrl || ''} onChange={handleChange} />
 					<InputField label="展示URL" name="exhibitionUrl" value={form.exhibitionUrl || ''} onChange={handleChange} />
-					<InputField label="スケジュール" name="schedule" value={form.schedule} onChange={handleChange} />
+					<InputField label="スケジュール" name="schedule" value={form.startDate} onChange={handleChange} />
 					<div>
 						<label className="block text-sm font-medium mb-1">説明</label>
 						<textarea
