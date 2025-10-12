@@ -11,6 +11,7 @@ export default async function MuseumHomePage() {
       <AreaSearch />
       <ImageCarousel />
       <SwipeOrExtendMuseumImage />
+      <GardenAndPhotoImageLayout />
     </main>
   );
 }

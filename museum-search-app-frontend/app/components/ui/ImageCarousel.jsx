@@ -1,3 +1,5 @@
+export const revalidate = 3600 * 24;
+
 import Image from 'next/image';
 import Link from 'next/link';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -6,13 +8,20 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 
 export default async function ImageCarousel() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/museums/all`, {
-    next: {revalidate: 3600 * 24},
-  });
-  if (!res.ok) {
-    throw new Error('美術館の取得に失敗しました');
-  }
-  const museums = await res.json();
+  let museums = [];
+	try {
+		const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/museums/all`, {
+			next: { revalidate: 3600 * 24 },
+		});
+		if (res.ok) {
+			museums = await res.json();
+		} else {
+			console.error("APIレスポンスエラー:", res.status);
+		}
+	} catch (error) {
+		console.error("フェッチ中にエラー発生:", error);
+		museums = [];
+	}
 
   return (
     <>
