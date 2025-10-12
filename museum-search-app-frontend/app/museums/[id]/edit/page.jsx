@@ -87,49 +87,49 @@ export default function EditMuseumPage() {
             setError("住所を入力してください");
             return;
         }
-        if (form.name.length > 100 ) {
+        if ((form.name?.length ?? 0)> 100 ) {
             setError('美術館名は100文字以下で登録してください');
         }
-        if (form.exhibition.length > 100 ) {
+        if ((form.exhibition?.length ?? 0) > 100 ) {
             setError('展覧会名は100文字以下で登録してください');
         }
-        if (form.startDate.length > 100 ) {
+        if ((form.startDate?.length ?? 0) > 100 ) {
             setError('スケジュールは100文字以下で登録してください');
         }
-		if (form.endDate.length > 100 ) {
+		if ((form.endDate?.length ?? 0) > 100 ) {
             setError('スケジュールは100文字以下で登録してください');
         }
-        if (form.category.length > 100 ) {
+        if ((form.category?.length ?? 0) > 100 ) {
             setError('カテゴリーは100文字以下で登録してください');
         }
-        if (form.exhibitionUrl.length > 100 ) {
+        if ((form.exhibitionUrl?.length ?? 0) > 100 ) {
             setError('美術館名は100文字以下で登録してください');
         }
-        if (form.museumUrl.length > 100 ) {
+        if ((form.museumUrl?.length ?? 0) > 100 ) {
             setError('美術館名は100文字以下で登録してください');
         }
-        if (form.address.length > 100 ) {
+        if ((form.address?.length ?? 0) > 100 ) {
             setError('住所は100文字以下で登録してください');
         }
-        if (form.prefecture.length > 10 ) {
+        if ((form.prefecture?.length ?? 0) > 10 ) {
             setError('都道府県は10文字以下で登録してください');
         }
-        if (form.phoneNumber.length > 15 ) {
+        if ((form.phoneNumber?.length ?? 0) > 15 ) {
             setError('電話番号は10文字以下で登録してください');
         }
-        if (form.openingHours.length > 500 ) {
+        if ((form.openingHours?.length ?? 0) > 500 ) {
             setError('開館時間は500文字以下で登録してください');
         }
-        if (form.closingDays.length > 500 ) {
+        if ((form.closingDays?.length ?? 0) > 500 ) {
             setError('休館日は500文字以下で登録してください');
         }
-        if (form.access.length > 500 ) {
+        if ((form.access?.length ?? 0) > 500 ) {
             setError('アクセスは500文字以下で登録してください');
         }
-        if (form.admissionFee.length > 1000 ) {
+        if ((form.admissionFee?.length ?? 0) > 1000 ) {
             setError('入館料は1000文字以下で登録してください');
         }
-        if (form.description.length > 1500 ) {
+        if ((form.description?.length ?? 0) > 1500 ) {
             setError('展示説明は100文字以下で登録してください');
         }
 
