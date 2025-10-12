@@ -145,7 +145,7 @@ export default function EditMuseumPage() {
 
 			if (!res.ok) throw new Error('更新に失敗しました');
 			alert('更新が完了しました');
-			router.push('/');
+			router.push('/mypage');
 		} catch (err) {
 			setError(err.message);
 		}

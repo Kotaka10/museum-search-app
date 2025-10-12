@@ -141,7 +141,7 @@ public class MuseumController {
         User user = userService.findUserByUserName(userName);
         Museum updated = museumService.updateMuseum(id, updatedMuseum, user);
         return ResponseEntity.ok(updated);
-}
+    }
 
     @GetMapping("/mypage")
     @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
