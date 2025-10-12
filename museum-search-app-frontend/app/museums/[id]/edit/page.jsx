@@ -137,7 +137,7 @@ export default function EditMuseumPage() {
 			const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/museums/${id}`, {
 				method: 'PUT',
 				headers: {
-					"Authorization": "Bearer ${token}",
+					"Authorization": `Bearer ${token}`,
 					"Content-Type": "application/json",
 				},
 				body: JSON.stringify(form),
