@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useAuth } from "@/app/context/AuthContext";
+import { useAuth } from "@/app/authentication/AuthContext";
 
 const formatDate = (dateStr) => {
     if (!dateStr) return "";

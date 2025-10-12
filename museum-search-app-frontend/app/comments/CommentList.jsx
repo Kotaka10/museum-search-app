@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { FaComment } from "react-icons/fa";
 import ChangeProfileImage from "@/app/components/common/ChangeProfileImage";
-import { useAuth } from "@/app/context/AuthContext";
+import { useAuth } from "@/app/authentication/AuthContext";
 
 export default function CommentList({ comments, setComments, currentUser }) {
     const [editingId, setEditingId] = useState(null);

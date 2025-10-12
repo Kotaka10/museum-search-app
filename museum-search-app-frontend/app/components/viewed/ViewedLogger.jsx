@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect } from "react";
-import { useAuth } from "@/app/context/AuthContext";
+import { useAuth } from "@/app/authentication/AuthContext";
 
 export default function ViewedLogger({ museum }) {
     const { token } = useAuth();

@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
-import { useAuth } from "@/app/context/AuthContext";
+import { useAuth } from "@/app/authentication/AuthContext";
 
 export default function ChangeProfileImage({ userId }) {
     const [imageUrl, setImageUrl] = useState(null);

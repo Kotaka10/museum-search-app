@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from "react";
-import { useAuth } from "@/app/context/AuthContext";
+import { useAuth } from "@/app/authentication/AuthContext";
 import CommentForm from "@/app/comments/CommentForm";
 import CommentList from "@/app/comments/CommentList";
 

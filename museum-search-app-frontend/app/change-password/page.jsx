@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from "react";
-import { useAuth } from "../context/AuthContext"; 
+import { useAuth } from "../authentication/AuthContext"; 
 
 export default function ChangePasswordPage() {
     const [currentPassword, setCurrentPassword] = useState("");

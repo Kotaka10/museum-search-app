@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import { useAuth } from '@/app/context/AuthContext';
+import { useAuth } from '@/app/authentication/AuthContext';
 
 export default function SwipeOrFocusMuseumImage() {
   const [museums, setMuseums] = useState([]);

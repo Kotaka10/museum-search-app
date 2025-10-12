@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import MuseumDetailCard from "@/app/components/common/MuseumDetailCard";
 import ViewedLogger from "@/app/components/viewed/ViewedLogger";
 import LocalViewedLogger from "@/app/components/viewed/LocalViewedLogger";
-import { useAuth } from "@/app/context/AuthContext";
+import { useAuth } from "@/app/authentication/AuthContext";
 import Image from "next/image";
 
 export default function FetchMuseumsById({ fetchedData }) {

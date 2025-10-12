@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { useRouter } from "next/navigation";
-import { useAuth } from '@/app/context/AuthContext';
+import { useAuth } from '@/app/authentication/AuthContext';
 
 export default function EditEmail() {
     const [email, setEmail] = useState('');

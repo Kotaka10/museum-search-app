@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { useRouter, useParams } from 'next/navigation';
-import { useAuth } from '@/app/context/AuthContext';
+import { useAuth } from '@/app/authentication/AuthContext';
 
 function InputField({ label, name, type = 'text', value, onChange }) {
   return (

@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { FaHistory } from 'react-icons/fa';
-import { useAuth } from "@/app/context/AuthContext";
+import { useAuth } from "@/app/authentication/AuthContext";
 
 export default function ViewedMuseums() {
     const [history, setHistory] = useState([]);

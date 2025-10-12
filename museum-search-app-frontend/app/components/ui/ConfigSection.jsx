@@ -4,7 +4,7 @@ import ChangeProfileImage from '@/app/components/common/ChangeProfileImage';
 import Link from 'next/link';
 import { logoutAPI } from '@/lib/auth';
 import { useRouter } from 'next/navigation';
-import { useAuth } from '@/app/context/AuthContext';
+import { useAuth } from '@/app/authentication/AuthContext';
 
 export default function ConfigSection() {
     const router = useRouter();

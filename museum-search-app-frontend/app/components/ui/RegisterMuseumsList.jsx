@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { FaLandmark } from "react-icons/fa";
-import { useAuth } from "@/app/context/AuthContext";
+import { useAuth } from "@/app/authentication/AuthContext";
 import DeleteMuseum from "@/app/museums/delete/DeleteMuseum";
 
 export default function RegisterMuseumsList() {

@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react';
-import { useAuth } from '@/app/context/AuthContext';
+import { useAuth } from '@/app/authentication/AuthContext';
 
 export default function AdminUserPage() {
   const [users, setUsers] = useState([]);

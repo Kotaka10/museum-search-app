@@ -1,6 +1,6 @@
 'use client';
 
-import { useAuth } from "@/app/context/AuthContext";
+import { useAuth } from "@/app/authentication/AuthContext";
 import { useEffect, useState } from "react";
 
 export default function DeleteMuseum({ id }) {

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from "react";
-import { useAuth } from '@/app/context/AuthContext';
+import { useAuth } from '@/app/authentication/AuthContext';
 
 export default function RegisterUserPage() {
     const [email, setEmail] = useState('');

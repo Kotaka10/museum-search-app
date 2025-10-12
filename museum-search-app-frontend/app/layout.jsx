@@ -1,8 +1,8 @@
 import '@/styles/globals.css';
 import Header from '@/app/components/common/Header';
 import Footer from '@/app/components/common/Footer';
-import { AuthProvider } from '@/app/context/AuthContext';
-import GoogleMapsProvider from '@/app/providers/GoogleMapsProvider';
+import { AuthProvider } from '@/app/authentication/AuthContext';
+import GoogleMapsProvider from '@/app/google/GoogleMapsProvider';
 
 
 export const metadata = {
