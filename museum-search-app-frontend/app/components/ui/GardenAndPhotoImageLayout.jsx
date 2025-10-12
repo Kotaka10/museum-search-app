@@ -1,14 +1,13 @@
+export const revalidate = 3600 * 24;
+
 import Image from 'next/image';
 import Link from 'next/link';
-
-export const revalidate = 3600 * 24;
 
 export default async function GardenImageLayout() {
 	let museums = [];
 	try {
 		const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/museums/all`, {
 			next: { revalidate: 3600 * 24 },
-			cache: "no-store",
 		});
 		if (res.ok) {
 			museums = await res.json();
@@ -17,6 +16,7 @@ export default async function GardenImageLayout() {
 		}
 	} catch (error) {
 		console.error("フェッチ中にエラー発生:", error);
+		museums = [];
 	}
 
 	return (
