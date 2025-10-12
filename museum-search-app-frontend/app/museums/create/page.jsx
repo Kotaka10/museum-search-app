@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter } from "next/router";
 import Link from "next/link";
 import { useAuth } from "@/app/authentication/AuthContext";
 
@@ -125,8 +125,8 @@ export default function CreateMuseumPage() {
                 throw new Error("美術館の作成に失敗しました");
             }
 
-            router.push("/mypage");
             alert("美術館が「承認待ち美術館」として正常に登録されました。ステータスはマイページで確認してください");
+            router.push("/mypage");
         } catch (err) {
             setError(err.message || "美術館の作成に失敗しました");
         }
