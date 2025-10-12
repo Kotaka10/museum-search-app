@@ -135,11 +135,11 @@ public class MuseumController {
     public ResponseEntity<Museum> updateMuseum(
         @PathVariable Long id,
         @RequestBody Museum updatedMuseum,
-        @AuthenticationPrincipal org.springframework.security.core.userdetails.User principal
+        @AuthenticationPrincipal org.springframework.security.core.userdetails.User user
     ) {
-        String userName = principal.getUsername();
-        User user = userService.findUserByUserName(userName);
-        Museum updated = museumService.updateMuseum(id, updatedMuseum, user);
+        String email = user.getUsername();
+        User foundUser = userService.findUserByEmail(email);
+        Museum updated = museumService.updateMuseum(id, updatedMuseum, foundUser);
         return ResponseEntity.ok(updated);
     }
 
