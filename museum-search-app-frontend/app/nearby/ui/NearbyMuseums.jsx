@@ -30,10 +30,10 @@ export default function NearbyMuseums({ museums }) {
                     lat: latitude,
                     lng: longitude,
                 });
-                (error) => {
-                    console.error("位置情報取得失敗" + error);
-                }
-            }    
+            },
+            (error) => {
+                console.error("位置情報取得失敗" + error);
+            }   
         );
     }, []);
 
