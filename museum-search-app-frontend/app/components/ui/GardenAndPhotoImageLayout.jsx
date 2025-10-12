@@ -4,13 +4,20 @@ import Link from 'next/link';
 export const revalidate = 3600 * 24;
 
 export default async function GardenImageLayout() {
-	const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/museums/all`, {
-		next: {revalidate: 3600 * 24},
-	});
-	if (!res.ok) {
-		throw new Error('美術館の取得に失敗しました');
+	let museums = [];
+	try {
+		const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/museums/all`, {
+			next: { revalidate: 3600 * 24 },
+			cache: "no-store",
+		});
+		if (res.ok) {
+			museums = await res.json();
+		} else {
+			console.error("APIレスポンスエラー:", res.status);
+		}
+	} catch (error) {
+		console.error("フェッチ中にエラー発生:", error);
 	}
-	const museums = await res.json();
 
 	return (
 		<div className="mb-2">
