@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import { Menu, XCircle, X, Github, Instagram } from 'lucide-react'
 import { Transition } from '@headlessui/react'
 import Link from 'next/link'
-import SearchMuseums from '@/app/components/ui/SearchMuseums'
+import SearchMuseums from '@/app/components/explore/SearchMuseums'
 
 export default function MobileMenu() {
   const [isOpen, setIsOpen] = useState(false)

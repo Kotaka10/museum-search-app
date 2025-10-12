@@ -2,10 +2,10 @@
 
 import { useEffect, useState } from "react";
 import { useAuth } from "@/app/authentication/AuthContext"; 
-import ConfigSection from "@/app/components/ui/ConfigSection";
+import ConfigSection from "@/app/mypage/ui/ConfigSection";
 import ViewedMuseums from "@/app/components/viewed/ViewedMuseums";
 import CommentList from "@/app/comments/CommentList";
-import RegisterMuseumsList from "@/app/components/ui/RegisterMuseumsList";
+import RegisterMuseumsList from "@/app/mypage/ui/RegisterMuseumsList";
 import Link from "next/link";
 import EditUserName from "@/app/users/edit/EditUserName";
 import EditEmail from "@/app/users/edit/EditEmail";

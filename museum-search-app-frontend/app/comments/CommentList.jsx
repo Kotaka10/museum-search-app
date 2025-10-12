@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { FaComment } from "react-icons/fa";
-import ChangeProfileImage from "@/app/components/common/ChangeProfileImage";
+import ChangeProfileImage from "@/app/mypage/ui/ChangeProfileImage";
 import { useAuth } from "@/app/authentication/AuthContext";
 
 export default function CommentList({ comments, setComments, currentUser }) {

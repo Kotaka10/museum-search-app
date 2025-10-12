@@ -1,6 +1,6 @@
 'use client';
 
-import ChangeProfileImage from '@/app/components/common/ChangeProfileImage';
+import ChangeProfileImage from '@/app/mypage/ui/ChangeProfileImage';
 import Link from 'next/link';
 import { logoutAPI } from '@/lib/auth';
 import { useRouter } from 'next/navigation';

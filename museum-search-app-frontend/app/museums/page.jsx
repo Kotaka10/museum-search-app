@@ -1,4 +1,4 @@
-import SearchResult from '@/app/museums/SearchResult';
+import SearchResult from '@/app/museums/ui/SearchResult';
 
 export default async function SearchResultPage({ searchParams }) {
 	const params = await searchParams;

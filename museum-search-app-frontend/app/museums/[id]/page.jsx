@@ -1,4 +1,4 @@
-import FetchMuseumsById from "@/app/museums/[id]/FetchMuseumsById";
+import FetchMuseumsById from "@/app/museums/[id]/ui/FetchMuseumsById";
 import { getMuseumById } from "@/lib/api";
 
 export default async function DetailMuseumPage({ params }) {
