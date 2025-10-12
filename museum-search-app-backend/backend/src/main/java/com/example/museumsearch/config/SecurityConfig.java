@@ -42,16 +42,15 @@ public class SecurityConfig {
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers(HttpMethod.GET, "/api/comments/**").permitAll()
                 .requestMatchers(HttpMethod.GET, "/api/museums/results", "/api/museums/results/").permitAll()
+                .requestMatchers("/api/users/login", "/api/users/register").permitAll()
                 .requestMatchers("/api/users/mypage", "/api/users/change-password").hasAnyRole("ADMIN", "USER")
+                .requestMatchers(HttpMethod.POST, "/api/users/profile-image").authenticated()
                 .requestMatchers("/api/admin/**").hasRole("ADMIN")
                 .requestMatchers(HttpMethod.PUT, "/api/museums/**").hasAnyRole("ADMIN", "USER")
-                .requestMatchers(HttpMethod.POST, "/api/users/profile-image").authenticated()
                 .requestMatchers(HttpMethod.DELETE, "/api/museums/**").hasAnyRole("ADMIN", "USER")
                 .requestMatchers(HttpMethod.DELETE, "/api/comments/**").hasAnyRole("ADMIN", "USER")
                 .requestMatchers(HttpMethod.DELETE, "/api/users/**").hasAnyRole("ADMIN", "USER")
-                .requestMatchers("/api/users/login", "/api/users/register").permitAll()
                 .requestMatchers("/uploads/**").permitAll()
-                .requestMatchers("/api/museums/**").permitAll()
                 .anyRequest().authenticated()
             )
             .sessionManagement(session -> session
