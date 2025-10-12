@@ -76,7 +76,6 @@ export default function CreateMuseumPage() {
             setError(err.message || "美術館の作成に失敗しました");
         }
 
-        
         if (!form.name.trim()) {
             setError("美術館名を入力してください");
             return;

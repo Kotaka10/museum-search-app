@@ -21,10 +21,7 @@ function InputField({ label, name, type = 'text', value, onChange }) {
 
 export default function EditMuseumPage() {
 	const router = useRouter();
-	const params = useParams();
-	const id = Array.isArray(params?.id) ? params.id[0] : params?.id;
 	const { token } = useAuth();
-
 	const [form, setForm] = useState({
 		name: '',
 		address: '',
@@ -65,12 +62,11 @@ export default function EditMuseumPage() {
 	}, [id]);
 
 	const handleChange = (e) => {
-		const { name, value, type } = e.target;
-		setForm(prevForm => ({
-			...prevForm,
-			[name]: type === 'number' ? (value === '' ? '' : Number(value)) : value,
-		}));
-	};
+        setForm({
+            ...form,
+            [e.target.name]: e.target.value,
+        });
+    };
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
@@ -92,10 +88,65 @@ export default function EditMuseumPage() {
 		} catch (err) {
 			setError(err.message);
 		}
+
+		if (!form.name.trim()) {
+            setError("美術館名を入力してください");
+            return;
+        }
+        if (!form.exhibition.trim()) {
+            setError("展示名を入力してください");
+            return;
+        }
+        if (!form.address.trim()) {
+            setError("住所を入力してください");
+            return;
+        }
+        if (form.name.length > 100 ) {
+            setError('美術館名は100文字以下で登録してください');
+        }
+        if (form.exhibition.length > 100 ) {
+            setError('展覧会名は100文字以下で登録してください');
+        }
+        if (form.schedule.length > 100 ) {
+            setError('スケジュールは100文字以下で登録してください');
+        }
+        if (form.category.length > 100 ) {
+            setError('カテゴリーは100文字以下で登録してください');
+        }
+        if (form.exhibitionUrl.length > 100 ) {
+            setError('美術館名は100文字以下で登録してください');
+        }
+        if (form.museumUrl.length > 100 ) {
+            setError('美術館名は100文字以下で登録してください');
+        }
+        if (form.address.length > 100 ) {
+            setError('住所は100文字以下で登録してください');
+        }
+        if (form.prefecture.length > 10 ) {
+            setError('都道府県は10文字以下で登録してください');
+        }
+        if (form.phoneNumber.length > 15 ) {
+            setError('電話番号は10文字以下で登録してください');
+        }
+        if (form.openingHours.length > 500 ) {
+            setError('開館時間は500文字以下で登録してください');
+        }
+        if (form.closingDays.length > 500 ) {
+            setError('休館日は500文字以下で登録してください');
+        }
+        if (form.access.length > 500 ) {
+            setError('アクセスは500文字以下で登録してください');
+        }
+        if (form.admissionFee.length > 1000 ) {
+            setError('入館料は1000文字以下で登録してください');
+        }
+        if (form.description.length > 1500 ) {
+            setError('展示説明は100文字以下で登録してください');
+        }
 	};
 
 	return (
-		<div className="max-w-3xl mx-auto p-4">
+		<div className="max-w-3xl mx-auto p-4 bg-gradient-to-br from-emerald-50 via-cyan-50 to-sky-10">
 			<h1 className="text-2xl font-bold mb-4">美術館情報を編集</h1>
 
 			<form onSubmit={handleSubmit} className="space-y-4">
