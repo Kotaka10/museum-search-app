@@ -2,7 +2,7 @@
 
 import MuseumCommentSection from '@/app/comments/MuseumCommentSection';
 import DetailRow from '@/app/components/common/DetailRow';
-import MapWrapper from '@/app/nearby/ui/MapWrapper';
+import MapWrapper from '@/app/nearby-museums/ui/MapWrapper';
 import { useAuth } from '@/app/authentication/AuthContext';
 import ViewedMuseums from '@/app/components/viewed/ViewedMuseums';
 import LocalViewedMuseums from '@/app/components/viewed/LocalViewedMuseums';

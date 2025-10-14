@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from "react";
-import NearbyMuseumsWrapper from "@/app/nearby/ui/NearbyMuseumsWrapper";
+import NearbyMuseumsWrapper from "@/app/nearby-museums/ui/NearbyMuseumsWrapper";
 
 export default function NearbyMuseumsClient() {
     const [museums, setMuseums] = useState([]);
