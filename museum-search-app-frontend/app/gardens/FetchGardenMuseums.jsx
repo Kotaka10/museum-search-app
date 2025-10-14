@@ -22,7 +22,7 @@ export default function FetchGardenMuseums({ filteredGardens, garden }) {
                 const res = await fetch(
                     `${process.env.NEXT_PUBLIC_API_URL}/api/museums/${encodeURIComponent(garden)}?page=${page}&size=${size}&sort=${sortKey},asc`,
                 {
-                    next: { revalidate: 60 },
+                    next: { revalidate: 3600 * 24 },
                 });
                 const data = await res.json();
                 setMuseums(data.content);

@@ -20,7 +20,7 @@ export default function FilteredPrefecture({ filteredMuseums, prefecture}) {
         const fetchMuseums = async () => {
             try {
                 const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/museums/prefecture/${encodeURIComponent(prefecture)}?page=${page}&size=${size}&sort=${sortKey},asc`, {
-                    next: { revalidate: 60 },
+                    next: { revalidate: 3600 * 24 },
                 });
                 const data = await res.json();
                 setMuseums(data.content);
