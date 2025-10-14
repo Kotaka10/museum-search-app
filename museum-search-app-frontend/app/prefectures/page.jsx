@@ -1,4 +1,4 @@
-import FilteredPrefecture from '@/app/prefecture/FilteredPrefecture';
+import FilteredPrefecture from '@/app/prefectures/FilteredPrefecture';
 
 export default async function FilteredPrefecturePage({ searchParams }) {
     const params = await searchParams;
