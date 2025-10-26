@@ -78,7 +78,7 @@ public class MuseumController {
         return ResponseEntity.ok(filterd);
     }
 
-    @GetMapping("/nearby-museums")
+    @GetMapping("/map")
     public ResponseEntity<List<MuseumDTO>> getNearbyMuseum(
         @RequestParam(required = false) double lat, @RequestParam(required = false) double lon
     ) {

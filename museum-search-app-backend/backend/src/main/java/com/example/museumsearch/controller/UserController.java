@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
@@ -96,7 +95,7 @@ public class UserController {
         }
     }
 
-    @PostMapping("/register")
+    @PostMapping("/registeration")
     public ResponseEntity<?> registerUser(@Valid @RequestBody RegisterRequest request) {
         try {
             userService.registerUser(request.email, request.password, request.userName);
@@ -155,7 +154,7 @@ public class UserController {
         return ResponseEntity.ok(me);
     }
 
-    @DeleteMapping("/delete")
+@DeleteMapping("/deletion")
     @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     public ResponseEntity<?> deleteUser(@AuthenticationPrincipal org.springframework.security.core.userdetails.User user) {
         log.info("認証ユーザー: {}", user);
@@ -195,11 +194,6 @@ public class UserController {
     @GetMapping
     public ResponseEntity<User> findUserByEmail(String email) {
         return ResponseEntity.ok(userService.findUserByEmail(email));
-    }
-
-    @GetMapping("/exists")
-    public ResponseEntity<Boolean> existsUserByEamil(@Valid @RequestParam String email) {
-        return ResponseEntity.ok(userService.existsUserByEmail(email));
     }
 
     @PostMapping("/change-password")
@@ -263,7 +257,7 @@ public class UserController {
             .build();
     }
 
-    @GetMapping("/viewed")
+    @GetMapping("/history")
     public ResponseEntity<List<ViewedMuseumResponse>> getViewedMuseums(
         @AuthenticationPrincipal org.springframework.security.core.userdetails.User user)
     {
@@ -272,7 +266,7 @@ public class UserController {
         return ResponseEntity.ok(history);
     }
 
-    @PostMapping("/viewed")
+    @PostMapping("/history")
     public ResponseEntity<?> saveViewedMuseum(
         @RequestBody ViewedMuseumRequest request,
         @AuthenticationPrincipal org.springframework.security.core.userdetails.User user) 

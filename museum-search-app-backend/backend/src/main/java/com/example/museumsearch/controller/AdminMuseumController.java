@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.museumsearch.model.Museum;
@@ -25,16 +26,15 @@ public class AdminMuseumController {
 
     private final MuseumService museumService;
 
-    @GetMapping("/approved")
-    public ResponseEntity<List<Museum>> getApprovedMuseums() {
-        log.info("承認済みの美術館を取得します");
-        return ResponseEntity.ok(museumService.getApprovedMuseums());
-    }
-
-    @GetMapping("/pending")
-    public ResponseEntity<List<Museum>> getPendingMuseums() {
-        log.info("承認待ちの美術館を取得します");
-        return ResponseEntity.ok(museumService.getPendingMuseums());
+    @GetMapping
+    public ResponseEntity<List<Museum>> getMuseums(@RequestParam(required = false) String status) {
+        if (status == "APPROVED") {
+            return ResponseEntity.ok(museumService.getApprovedMuseums());
+        }
+        if (status == "PENDING") {
+            return ResponseEntity.ok(museumService.getPendingMuseums());
+        }
+        return null;
     }
 
     @PutMapping("/{id}/approve")
