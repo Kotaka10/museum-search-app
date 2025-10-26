@@ -67,7 +67,7 @@ public class MuseumController {
         return ResponseEntity.ok(dtoPage);
     }
 
-    @GetMapping("/prefecture/{prefecture}")
+    @GetMapping("/prefectures/{prefecture}")
     public ResponseEntity<Page<MuseumDTO>> filterMuseumByPrefecture(
         @PathVariable String prefecture,
         @PageableDefault(sort = "startDate", direction = Sort.Direction.ASC) Pageable pageable
@@ -78,7 +78,7 @@ public class MuseumController {
         return ResponseEntity.ok(filterd);
     }
 
-    @GetMapping("/nearby")
+    @GetMapping("/nearby-museums")
     public ResponseEntity<List<MuseumDTO>> getNearbyMuseum(
         @RequestParam(required = false) double lat, @RequestParam(required = false) double lon
     ) {
