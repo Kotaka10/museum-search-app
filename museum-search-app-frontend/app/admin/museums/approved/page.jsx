@@ -10,7 +10,7 @@ export default function ApprovedMuseumsPage() {
     useEffect(() => {
          const getApprovedMuseums = async () => {
             try {
-                const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/admin/museums/approved`, {
+                const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/admin/museums?status=APPROVED`, {
                     headers: {
                         "Authorization": `Bearer ${token}`
                     }

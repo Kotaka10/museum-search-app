@@ -16,7 +16,7 @@ export default function ConfigSection() {
         if (!confirmed) return;
 
         try {
-            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/users/delete`, {
+            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/users/deletion`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',

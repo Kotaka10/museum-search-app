@@ -10,7 +10,7 @@ export default function PendingMuseumsPage() {
     useEffect(() => {
         const fetchPendingMuseums = async () => {
             try {
-                const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/admin/museums/pending`, {
+                const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/admin/museums?status=PENDING`, {
                     headers: {
                         "Authorization": `Bearer ${token}`
                     },

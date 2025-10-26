@@ -19,7 +19,7 @@ export default function FilteredPrefecture({ filteredMuseums, prefecture}) {
     useEffect(() => {
         const fetchMuseums = async () => {
             try {
-                const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/museums/prefecture/${encodeURIComponent(prefecture)}?page=${page}&size=${size}&sort=${sortKey},asc`, {
+                const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/museums/prefectures/${encodeURIComponent(prefecture)}?page=${page}&size=${size}&sort=${sortKey},asc`, {
                     next: { revalidate: 3600 * 24 },
                 });
                 const data = await res.json();

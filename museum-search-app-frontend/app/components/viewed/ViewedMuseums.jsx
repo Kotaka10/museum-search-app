@@ -14,8 +14,7 @@ export default function ViewedMuseums() {
     useEffect(() => {
         const fetchViewedHistory = async () => {
             try {
-                const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/users/viewed`, {
-                    method: 'GET',
+                const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/users/history`, {
                     headers: {
                         "Authorization": `Bearer ${token}`
                     }

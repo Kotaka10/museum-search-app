@@ -18,7 +18,7 @@ export default function NearbyMuseumsClient() {
             const longitude = position.coords.longitude;
 
             try {
-                const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/museums/nearby?lat=${latitude}&lon=${longitude}`);
+                const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/museums/map?lat=${latitude}&lon=${longitude}`);
                 if (!res.ok) {
                     throw new Error('美術館の情報を取得できません');
                 }
