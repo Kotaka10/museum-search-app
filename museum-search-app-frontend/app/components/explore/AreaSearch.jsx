@@ -38,7 +38,7 @@ export default function PrefectureCard() {
                                         className="text-orange-400 hover:text-blue-500 cursor-pointer mb-2"
                                     >
                                         <Link
-                                            href={`/prefecture?prefecture=${encodeURIComponent(prefecture)}`}
+                                            href={`/prefectures?prefecture=${encodeURIComponent(prefecture)}`}
                                             className="text-orange-400 hover:text-blue-500"
                                         >
                                             {prefecture}
@@ -60,7 +60,7 @@ export default function PrefectureCard() {
                                         className="text-orange-400 hover:text-blue-500 cursor-pointer mb-2"
                                     >
                                         <Link
-                                            href={`/prefecture?prefecture=${encodeURIComponent(prefecture)}`}
+                                            href={`/prefectures?prefecture=${encodeURIComponent(prefecture)}`}
                                             className="text-orange-400 hover:text-blue-500"
                                         >
                                             {prefecture}
