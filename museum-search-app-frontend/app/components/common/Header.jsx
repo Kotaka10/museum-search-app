@@ -7,7 +7,7 @@ import MobileMenu from '@/app/components/common/MobileMenu';
 import Link from 'next/link';
 
 export default function Header() {
-    const { user, isLoading, logout } = useAuth();
+    const { user, logout } = useAuth();
 
     return (
         <header className="flex justify-between items-center p-2 bg-gray-100 shadow">
@@ -16,7 +16,7 @@ export default function Header() {
             </div>
             <div className="flex items-center space-x-2 sm:space-x-6 text-sm">
                 <SearchMuseums />
-                <Link href="/nearby" className="text-orange-500 hover:underline">マップ</Link>
+                <Link href="/nearby-museums" className="text-orange-500 hover:underline">マップ</Link>
                 {user ? (
                     <>
                         <Link href="/mypage" className="text-orange-500 hover:underline">マイページ</Link>

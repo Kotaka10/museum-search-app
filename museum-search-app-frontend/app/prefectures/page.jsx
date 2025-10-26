@@ -8,7 +8,7 @@ export default async function FilteredPrefecturePage({ searchParams }) {
 	const sortKey = params.sort ?? "startDate";
 
     const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/museums/prefecture/${encodeURIComponent(prefecture)}?page=${page}&size=${size}&sort=${sortKey},asc`
+        `${process.env.NEXT_PUBLIC_API_URL}/api/museums/prefectures/${encodeURIComponent(prefecture)}?page=${page}&size=${size}&sort=${sortKey},asc`
     );
     if (!res.ok) {
         throw new Error('美術館を取得でません');
