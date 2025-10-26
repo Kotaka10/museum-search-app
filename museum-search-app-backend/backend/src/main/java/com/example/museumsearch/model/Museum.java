@@ -29,24 +29,28 @@ public class Museum {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(length = 100)
     private String name;
 
+    @Column(length = 200)
     private String address;
 
+    @Column(length = 10)
     private String prefecture;
 
+    @Column(length = 100)
     private String exhibition;
 
-    @Column(name = "image_provider")
+    @Column(length = 100, name = "image_provider")
     private String imageProvider;
 
-    @Column(name = "exhibition_image")
+    @Column(length = 100, name = "exhibition_image")
     private String exhibitionImage;
 
-    @Column(name = "museum_url")
+    @Column(length = 100, name = "museum_url")
     private String museumUrl;
 
-    @Column(name ="exhibition_url")
+    @Column(length = 230, name ="exhibition_url")
     private String exhibitionUrl;
 
     @Column(name = "start_date")
@@ -55,25 +59,28 @@ public class Museum {
     @Column(name = "end_date")
     private LocalDate endDate;
 
+    @Column(length = 1500)
     private String description;
 
-    @Column(name ="phone_number")
+    @Column(length = 15, name ="phone_number")
     private String phoneNumber;
 
-    @Column(name ="opening_hours")
+    @Column(length = 500, name ="opening_hours")
     private String openingHours;
 
-    @Column(name ="closing_days")
+    @Column(length = 500, name ="closing_days")
     private String closingDays;
 
-    @Column(name ="adminssion_fee")
+    @Column(length = 1000, name ="adminssion_fee")
     private String admissionFee;
 
+    @Column(length = 500)
     private String access;
 
     private Double latitude;
     private Double longitude;
 
+    @Column(length = 100)
     private String category;
 
     private Double distance;
