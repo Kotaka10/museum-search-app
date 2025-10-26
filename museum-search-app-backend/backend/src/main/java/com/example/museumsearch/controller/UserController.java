@@ -95,7 +95,7 @@ public class UserController {
         }
     }
 
-    @PostMapping("/registeration")
+    @PostMapping("/registration")
     public ResponseEntity<?> registerUser(@Valid @RequestBody RegisterRequest request) {
         try {
             userService.registerUser(request.email, request.password, request.userName);
