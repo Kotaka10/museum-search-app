@@ -44,7 +44,6 @@ public class AdminUserController {
     }
 
     @GetMapping("/users/search")
-    @PreAuthorize("hasRole('ADMIN')")
     public Page<User> searchUsers(@RequestParam String keyword,
                                 @RequestParam(defaultValue = "0") int page,
                                 @RequestParam(defaultValue = "10") int size) {
