@@ -26,13 +26,13 @@ export default function RegisterUserPage() {
                     'Content-Type': 'application/json',
                  },
             });
+
+            const data = await res.json();
             if (!res.ok) {
-                const errorData = await res.json();
-                alert(errorData.error);
+                alert(data.error);
                 return;
             }
 
-            const data = await res.json();
 
             if (data.token){
                 localStorage.setItem("token", data.token);
