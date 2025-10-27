@@ -107,7 +107,7 @@ public class UserController {
 
             return ResponseEntity.ok(new LoginResponse(token, userDTO));
         } catch (IllegalArgumentException e) {
-            return ResponseEntity.badRequest().body("登録エラー: " + e.getMessage());
+            return ResponseEntity.badRequest().body(Map.of("error", "登録エラー: " + e.getMessage()));
         }
     }
 
