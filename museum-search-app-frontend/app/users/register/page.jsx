@@ -27,12 +27,14 @@ export default function RegisterUserPage() {
                  },
             });
 
+            console.log("Status:", res.status);
+            console.log("OK:", res.ok);
+
             const data = await res.json();
             if (!res.ok) {
                 alert(data.error);
                 return;
             }
-
 
             if (data.token){
                 localStorage.setItem("token", data.token);
