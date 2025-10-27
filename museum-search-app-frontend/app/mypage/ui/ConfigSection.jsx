@@ -24,11 +24,6 @@ export default function ConfigSection() {
                 },
             });
 
-            
-
-            console.log("Status:", res.status);
-            console.log("OK:", res.ok);
-
             if (!res.ok) {
                 const errorText = await res.text();
                 throw new Error(errorText || '退会に失敗しました');
