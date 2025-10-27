@@ -27,7 +27,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.util.Map;
 
 import com.example.museumsearch.dto.ChangePasswordRequest;
-import com.example.museumsearch.dto.UserDTO;
+import com.example.museumsearch.dto.UserResponse;
 import com.example.museumsearch.dto.ViewedMuseumRequest;
 import com.example.museumsearch.dto.ViewedMuseumResponse;
 import com.example.museumsearch.model.User;
@@ -80,9 +80,9 @@ public class UserController {
 
     public static class LoginResponse {
         private String token;
-        private UserDTO user;
+        private UserResponse user;
 
-        public LoginResponse(String token, UserDTO user) {
+        public LoginResponse(String token, UserResponse user) {
             this.token = token;
             this.user = user;
         }
@@ -90,7 +90,7 @@ public class UserController {
         public String getToken() {
             return token;
         }
-        public UserDTO getUser() {
+        public UserResponse getUser() {
             return user;
         }
     }
@@ -103,7 +103,7 @@ public class UserController {
             String token = userService.login(request.email, request.password);
 
             User user = userService.findUserByEmail(request.email);
-            UserDTO userDTO = new UserDTO(user.getId(), user.getUserName());
+            UserResponse userDTO = new UserResponse(user.getId(), user.getUserName());
 
             return ResponseEntity.ok(new LoginResponse(token, userDTO));
         } catch (IllegalArgumentException e) {
@@ -127,7 +127,7 @@ public class UserController {
             String token = jwtProvider.generateToken(user.getEmail(), List.of("ROLE_" + user.getRoles()));
 
             return ResponseEntity.ok(
-            new LoginResponse(token, new UserDTO(user.getId(), user.getUserName()))
+            new LoginResponse(token, new UserResponse(user.getId(), user.getUserName()))
         );
 
         } catch (AuthenticationException e) {

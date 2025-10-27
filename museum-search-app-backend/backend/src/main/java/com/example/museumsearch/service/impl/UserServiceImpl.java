@@ -138,9 +138,13 @@ public class UserServiceImpl implements UserService {
         User user = userRepository.findByEmail(email)
             .orElseThrow(() -> new RuntimeException("ユーザーが見つかりません"));
         if (!passwordEncoder.matches(rawPassword, user.getPassword())) {
-            throw new RuntimeException("パスワードが違います");
+            throw new IllegalArgumentException("パスワードが違います");
         }
-        return jwtProvider.generateToken(user.getEmail(), List.of("ROLE_" + user.getRoles()));
+        String roleStr = user.getRoles().toString();
+        if (!roleStr.startsWith("ROLE_")) {
+            roleStr = "ROLE_" + roleStr;
+        }
+        return jwtProvider.generateToken(user.getEmail(), List.of(roleStr));
     }
 
     @Override
