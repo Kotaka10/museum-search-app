@@ -20,10 +20,14 @@ export default function ConfigSection() {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',
-                "Authorization": `Bearer ${token}`
+                    "Authorization": `Bearer ${token}`
                 },
-                
             });
+
+            
+
+            console.log("Status:", res.status);
+            console.log("OK:", res.ok);
 
             if (!res.ok) {
                 const errorText = await res.text();
