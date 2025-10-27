@@ -42,7 +42,7 @@ export default function RegisterUserPage() {
                 alert("トークンが返されませんでした");
             }
         } catch (err) {
-            alert("API URL:", process.env.NEXT_PUBLIC_API_URL);
+            alert("会員登録に失敗しました");
         }
     };
 
