@@ -154,7 +154,7 @@ public class UserController {
         return ResponseEntity.ok(me);
     }
 
-@DeleteMapping("/deletion")
+    @DeleteMapping("/deletion")
     @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     public ResponseEntity<?> deleteUser(@AuthenticationPrincipal org.springframework.security.core.userdetails.User user) {
         log.info("認証ユーザー: {}", user);
