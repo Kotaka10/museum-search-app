@@ -42,7 +42,7 @@ public class SecurityConfig {
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers(HttpMethod.GET, "/api/comments/**").permitAll()
                 .requestMatchers(HttpMethod.GET, "/api/museums/**").permitAll()
-                .requestMatchers("/api/users/login", "/api/users/registeration").permitAll()
+                .requestMatchers("/api/users/login", "/api/users/registration").permitAll()
                 .requestMatchers("/api/users/mypage", "/api/users/change-password").hasAnyRole("ADMIN", "USER")
                 .requestMatchers(HttpMethod.POST, "/api/users/profile-image").authenticated()
                 .requestMatchers("/api/admin/**").hasRole("ADMIN")
