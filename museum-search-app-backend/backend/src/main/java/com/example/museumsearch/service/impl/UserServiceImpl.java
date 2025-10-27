@@ -44,14 +44,14 @@ public class UserServiceImpl implements UserService {
     private final JwtProvider jwtProvider;
 
     @Override
-    public void registerUser(String email, String password, String displayName) {
+    public void registerUser(String email, String password, String userName) {
         if (userRepository.existsByEmail(email)) {
             throw new IllegalArgumentException("既に登録されているメールアドレスです: " + email);
         }
         User user = new User();
         user.updateEmail(email);
         user.updatePassword(passwordEncoder.encode(password));
-        user.updateDisplayName(displayName);
+        user.updateUserName(userName);
         user.updateRoles(Role.USER);
         log.info("ユーザー登録: {}" + user.getEmail());
         userRepository.save(user);
@@ -62,17 +62,17 @@ public class UserServiceImpl implements UserService {
         User existingUser = findUserById(id);
 
         if (updateUser.getUserName() != null) {
-            existingUser.updateDisplayName(updateUser.getUserName());
+            existingUser.updateUserName(updateUser.getUserName());
         }
         log.info("ユーザー情報を更新します: {}", id);
         return userRepository.save(existingUser);
     }
 
     @Override
-    public void updateDisplayName(String email, String newDisplayName) {
+    public void updateDisplayName(String email, String newUserName) {
         User user = userRepository.findByEmail(email)
                 .orElseThrow(() -> new UsernameNotFoundException("ユーザーが見つかりません"));
-        user.updateDisplayName(newDisplayName);
+        user.updateUserName(newUserName);
         userRepository.save(user);
     }
 

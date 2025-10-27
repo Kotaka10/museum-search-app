@@ -45,8 +45,8 @@ public class User {
         this.password = password;
     }
 
-    public void updateDisplayName(String displayName) {
-        this.userName = displayName;
+    public void updateUserName(String userName) {
+        this.userName = userName;
     }
 
     public void updateProfileImageUrl(String profileImageUrl) {
