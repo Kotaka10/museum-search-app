@@ -28,7 +28,7 @@ export default function RegisterUserPage() {
             });
             if (!res.ok) {
                 const errorText = await res.text();
-                alert(errorText || "登録に失敗しました");
+                alert(errorText);
                 return;
             }
 
