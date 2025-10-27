@@ -27,8 +27,8 @@ export default function RegisterUserPage() {
                  },
             });
             if (!res.ok) {
-                const errorText = await res.text();
-                alert(errorText);
+                const errorData = await res.json();
+                alert(errorData.error);
                 return;
             }
 
