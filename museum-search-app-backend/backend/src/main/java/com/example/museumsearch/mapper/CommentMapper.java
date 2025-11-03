@@ -32,7 +32,6 @@ public interface CommentMapper {
             .museumName(comment.getMuseum().getName())
             .content(comment.getContent())
             .username(comment.getUsername())
-            .displayName(comment.getDisplayName())
             .createdAt(comment.getCreatedAt())
             .updatedAt(comment.getUpdatedAt())
             .build();

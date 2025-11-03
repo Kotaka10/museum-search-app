@@ -31,10 +31,7 @@ public class Comment {
     private Museum museum;
 
     @Column(length = 1000)
-    private String content;
-
-    @Column(name = "display_name")
-    private String displayName;
+    private String content;//不要なdisplay_nameフィールド＆getterをcommentクラス・commentmapperクラスで削除
 
     @Column(name = "created_at")
     private LocalDateTime createdAt;
