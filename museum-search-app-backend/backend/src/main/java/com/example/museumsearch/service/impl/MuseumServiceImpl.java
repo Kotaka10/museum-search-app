@@ -154,9 +154,7 @@ public class MuseumServiceImpl implements MuseumService {
                     .distance(distance)
                     .build();
             })
-            .sorted(Comparator.comparingDouble(
-                m -> calculateDistance(lat, lon, m.getLatitude(), m.getLongitude())
-            ))
+            .sorted(Comparator.comparingDouble(MuseumDTO::getDistance))
             .collect(Collectors.toList());
     }
 
