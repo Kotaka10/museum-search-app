@@ -72,7 +72,7 @@ public class MuseumController {
         @PathVariable String prefecture,
         @PageableDefault(sort = "startDate", direction = Sort.Direction.ASC) Pageable pageable
     ) {
-        Page<Museum> foundMuseums = museumRepository.findByPrefectureEqualsIgnoreCase(prefecture, pageable);
+        Page<Museum> foundMuseums = museumRepository.findByPrefectureEquals(prefecture, pageable);
 
         Page<MuseumDTO> filterd = foundMuseums.map(museumMapper::toDTO);
         return ResponseEntity.ok(filterd);
