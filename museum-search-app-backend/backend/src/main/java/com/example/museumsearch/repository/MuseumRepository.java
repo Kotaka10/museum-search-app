@@ -17,9 +17,9 @@ public interface MuseumRepository extends JpaRepository<Museum, Long>{
     List<Museum> findByCreatedBy(User user);
     boolean existsByName(String name);
     boolean existsByNameAndExhibition(String name, String exhibition);
-    Page<Museum> findByCategoryContaining(String name, Pageable pageable);
+    Page<Museum> findByCategoryContaining(String category, Pageable pageable);
     Page<Museum> findByPrefectureEqualsIgnoreCase(String address, Pageable pageable);
     Page<Museum> findByNameContainingIgnoreCaseOrExhibitionContainingIgnoreCaseOrAddressContainingIgnoreCase(
         String name, String exihibition, String address, Pageable pageable
     );
-}
+}   
