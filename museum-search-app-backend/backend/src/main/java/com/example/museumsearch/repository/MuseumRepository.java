@@ -18,8 +18,8 @@ public interface MuseumRepository extends JpaRepository<Museum, Long>{
     boolean existsByName(String name);
     boolean existsByNameAndExhibition(String name, String exhibition);
     Page<Museum> findByCategoryContaining(String category, Pageable pageable);
-    Page<Museum> findByPrefectureEqualsIgnoreCase(String prefecture, Pageable pageable);
-    Page<Museum> findByNameContainingIgnoreCaseOrExhibitionContainingIgnoreCaseOrAddressContainingIgnoreCase(
+    Page<Museum> findByPrefectureEquals(String prefecture, Pageable pageable);
+    Page<Museum> findByNameContainingOrExhibitionContainingOrAddressContaining(
         String name, String exihibition, String address, Pageable pageable
     );
 }   
