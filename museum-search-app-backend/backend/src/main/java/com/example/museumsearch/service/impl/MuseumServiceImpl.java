@@ -122,7 +122,7 @@ public class MuseumServiceImpl implements MuseumService {
         if (keyword == null || keyword.isBlank()) return Page.empty(pageable);
 
         return museumRepository
-            .findByNameContainingIgnoreCaseOrExhibitionContainingIgnoreCaseOrAddressContainingIgnoreCase(keyword, keyword, keyword, pageable);
+            .findByNameContainingOrExhibitionContainingOrAddressContaining(keyword, keyword, keyword, pageable);
     }
 
     @Override
