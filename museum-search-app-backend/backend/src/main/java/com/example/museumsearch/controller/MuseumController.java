@@ -152,7 +152,7 @@ public class MuseumController {
         User managedUser = userRepository.findByEmail(email)
             .orElseThrow(() -> new UsernameNotFoundException("ユーザーが見つかりません"));
 
-        List<Museum> museums = museumRepository.findByCreatedByIsNotNullAndCreatedBy(managedUser);
+        List<Museum> museums = museumRepository.findByCreatedBy(managedUser);
         List<MuseumDTO> dtos = museums.stream()
             .map(museumMapper::toDTO)
             .toList();

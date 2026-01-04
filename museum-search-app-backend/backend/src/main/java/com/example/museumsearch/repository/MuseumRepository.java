@@ -14,7 +14,7 @@ import com.example.museumsearch.model.User;
 @Repository
 public interface MuseumRepository extends JpaRepository<Museum, Long>{
     List<Museum> findByStatus(MuseumStatus status);
-    List<Museum> findByCreatedByIsNotNullAndCreatedBy(User user);
+    List<Museum> findByCreatedBy(User user);
     boolean existsByName(String name);
     boolean existsByNameAndExhibition(String name, String exhibition);
     Page<Museum> findByCategoryContaining(String name, Pageable pageable);
