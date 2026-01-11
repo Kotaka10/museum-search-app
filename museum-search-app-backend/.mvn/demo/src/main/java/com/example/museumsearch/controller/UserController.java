@@ -165,7 +165,7 @@ public class UserController {
 
     @GetMapping("/exists")
     public ResponseEntity<Boolean> existsUserByEamil(@Valid @RequestParam String email) {
-        return ResponseEntity.ok(userService.existsUserByEmail(email));
+        return ResponseEntity.ok(userRepository.existsByEmail(email));
     }
 
     @PostMapping("/change-password")
@@ -211,7 +211,7 @@ public class UserController {
         String currentEmail = user.getUsername();
         String newEmail = request.get("email");
 
-        if (userService.existsUserByEmail(newEmail)) {
+        if (userRepository.existsByEmail(newEmail)) {
             return ResponseEntity.badRequest().body("このメールアドレスは既に使用されています");
         }
 
