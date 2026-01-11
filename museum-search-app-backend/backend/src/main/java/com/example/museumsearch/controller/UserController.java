@@ -177,12 +177,6 @@ public class UserController {
                 .build();
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<User> editUser(@Valid @PathVariable Long id, @RequestBody User user) {
-        log.info("ユーザー情報を編集します: id={}, 新しい内容={}", id, user);
-        return ResponseEntity.ok(userService.editUser(id, user));
-    }
-
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
         log.info("ユーザーを削除します: id={}", id);

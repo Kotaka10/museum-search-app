@@ -11,7 +11,6 @@ import com.example.museumsearch.model.User;
 
 public interface UserService {
     void registerUser(String email, String password, String displayName);
-    User editUser(Long id, User user);
     void updateDisplayName(String email, String newDisplayName);
     void updateEmail(String currentEmail, String newEmail);
     void deleteUserById(Long id);

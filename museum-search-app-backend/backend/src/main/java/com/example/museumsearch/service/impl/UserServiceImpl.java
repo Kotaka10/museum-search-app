@@ -58,17 +58,6 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User editUser(Long id, User updateUser) {
-        User existingUser = findUserById(id);
-
-        if (updateUser.getUserName() != null) {
-            existingUser.updateUserName(updateUser.getUserName());
-        }
-        log.info("ユーザー情報を更新します: {}", id);
-        return userRepository.save(existingUser);
-    }
-
-    @Override
     public void updateDisplayName(String email, String newUserName) {
         User user = userRepository.findByEmail(email)
                 .orElseThrow(() -> new UsernameNotFoundException("ユーザーが見つかりません"));
