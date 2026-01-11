@@ -144,7 +144,9 @@ public class UserController {
     }
 
     @GetMapping("/mypage")
-    public ResponseEntity<User> getCurrentUser(@AuthenticationPrincipal org.springframework.security.core.userdetails.User user) {
+    public ResponseEntity<User> getCurrentUser(
+        @AuthenticationPrincipal org.springframework.security.core.userdetails.User user
+    ) {
         if (user == null) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }
@@ -156,7 +158,9 @@ public class UserController {
 
     @DeleteMapping("/deletion")
     @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
-    public ResponseEntity<?> deleteUser(@AuthenticationPrincipal org.springframework.security.core.userdetails.User user) {
+    public ResponseEntity<?> deleteUser(
+        @AuthenticationPrincipal org.springframework.security.core.userdetails.User user
+    ) {
         log.info("認証ユーザー: {}", user);
         String email = user.getUsername();
         userService.deleteUserByEmail(email);
@@ -207,7 +211,9 @@ public class UserController {
     }
 
     @GetMapping("/display-name")
-    public ResponseEntity<String> getDsiplayName(@AuthenticationPrincipal org.springframework.security.core.userdetails.User user) {
+    public ResponseEntity<String> getDsiplayName(
+        @AuthenticationPrincipal org.springframework.security.core.userdetails.User user
+    ) {
         String email = user.getUsername();
         User currentUser = userRepository.findByEmail(email)
                 .orElseThrow(() -> new UsernameNotFoundException("ユーザーが見つかりません"));
@@ -227,7 +233,9 @@ public class UserController {
     }
 
     @GetMapping("/email")
-    public ResponseEntity<String> getEmail(@AuthenticationPrincipal org.springframework.security.core.userdetails.User user) {
+    public ResponseEntity<String> getEmail(
+        @AuthenticationPrincipal org.springframework.security.core.userdetails.User user
+    ) {
         return ResponseEntity.ok(user.getUsername());
     }
 
