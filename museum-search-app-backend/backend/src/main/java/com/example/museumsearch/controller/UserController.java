@@ -247,7 +247,7 @@ public class UserController {
         String currentEmail = user.getUsername();
         String newEmail = request.get("email");
 
-        if (userService.existsUserByEmail(newEmail)) {
+        if (userRepository.existsByEmail(newEmail)) {
             return ResponseEntity.badRequest().body("このメールアドレスは既に使用されています");
         }
 

@@ -115,11 +115,6 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean existsUserByEmail(String email) {
-        return userRepository.existsByEmail(email);
-    }
-
-    @Override
     public String login(String email, String rawPassword) {
         User user = userRepository.findByEmail(email)
             .orElseThrow(() -> new RuntimeException("ユーザーが見つかりません"));

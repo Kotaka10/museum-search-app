@@ -18,7 +18,6 @@ public interface UserService {
     void deleteUserByEmail(String email);
     User findUserById(Long id);
     User findUserByEmail(String email);
-    boolean existsUserByEmail(String email);
     String login(String userNameOrEmail, String password);
     User getCurrentUser(String token);
     void changePassword(String email, String oldPassword, String newPassword);
